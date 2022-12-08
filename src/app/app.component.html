@@ -1,0 +1,82 @@
+
+<div class="container row">
+  <div class="col-md-4 p-5">
+
+    <div class="card">
+      <img class="rounded img-reponsive mx-auto d-block"
+        src="https://storage.googleapis.com/scratchpay-com-assets/challenges/Brand-logo-Scratch-App-Borrower-RGB%402x.png">
+      <h3 class="p-3 mx-auto">{{this.todoTitle}}</h3>
+      <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" formControlName="firstName" id="floatingInput"
+              placeholder="First Name">
+            <label for="floatingInput">First Name</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" formControlName="lastName"
+              placeholder="Last Name">
+            <label for="floatingInput">Last Name</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInput" formControlName="email"
+              placeholder="name@example.com">
+            <label for="floatingInput">Email</label>
+          </div>
+          <div class="form-floating mb-3">
+            <select class="form-select" id="floatingSelectGrid" formControlName="role" required>
+              <option value="doctor">Doctor</option>
+              <option value="admin">Admin</option>
+              <option value="accountant">Accountant</option>
+            </select>
+            <label for="floatingSelectGrid">Role </label>
+          </div>
+          <div class="form-floating mb-3">
+            <select class="form-select" id="floatingSelectGrid" formControlName="status" required>
+              <option value="active">Active</option>
+              <option value="Inactive">Inactive</option>
+            </select>
+            <label for="floatingSelectGrid">Status </label>
+          </div>
+
+          <button type="submit" [disabled]="!form.valid" class="btn btn-success">{{this.addBtntext}}</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8 p-5">
+    <div class="card">
+      <div class="card-body">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Status </th>
+              <th scope="col">Role </th>
+              <th scope="col">Update</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of listsData; index as i">
+              <th scope="row">{{i}}</th>
+              <td>{{ item.firstName }}</td>
+              <td>{{ item.lastName }}</td>
+              <td>{{ item.email }}</td>
+              <td>{{ item.status }}</td>
+              <td>{{ item.role }}</td>
+              <td><button type="submit" (click)="updateItem(item)" class="btn btn-primary">Update</button></td>
+              <td><button type="submit" (click)="removeItem(item)" class="btn btn-danger">Delete</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<router-outlet></router-outlet>
